@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docker Compose — заметки</title>
+<style>
+body { max-width: 760px; margin: 40px auto; padding: 0 20px; font: 18px/1.5 system-ui; }
+textarea { box-sizing: border-box; width: 100%; min-height: 100px; font: inherit; }
+button { margin: 12px 0; padding: 8px 20px; font: inherit; cursor: pointer; }
+li { white-space: pre-wrap; overflow-wrap: anywhere; margin-bottom: 16px; }
+small { display: block; color: #555; }
+</style>
+<h1>Заметки в PostgreSQL</h1>
+<p>Лабораторная работа Docker Compose. Последние 100 записей.</p>
+<form method="post" action="/notes">
+  <label for="text">Новая заметка (до 500 символов)</label>
+  <textarea id="text" name="text" required maxlength="500"></textarea>
+  <button type="submit">Сохранить</button>
+</form>
+<ol>
+{% for note in notes %}
+  <li>{{ note.text }}<small>№ {{ note.id }} · {{ note.created_at }}</small></li>
+{% else %}
+  <li>Записей пока нет. Добавьте первую.</li>
+{% endfor %}
+</ol>
+</html>
