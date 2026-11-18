@@ -1,0 +1,24 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Persistent application data (keep empty directories in Git)
+/uploads/*
+!/uploads/.gitkeep
+/media/*
+!/media/.gitkeep
+/pdfs/*
+!/pdfs/.gitkeep
+/data/*
+!/data/.gitkeep
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+__pycache__/
+.DS_Store
+Thumbs.db
