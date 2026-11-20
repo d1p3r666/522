@@ -1,0 +1,44 @@
+services:
+  db:
+    image: mariadb:11.5.2
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
+      MYSQL_DATABASE: joomla_db
+      MYSQL_USER: joomla_user
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - joomla-network
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  joomla:
+    image: joomla:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+    environment:
+      JOOMLA_DB_HOST: db:3306
+      JOOMLA_DB_USER: joomla_user
+      JOOMLA_DB_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in .env}
+      JOOMLA_DB_NAME: joomla_db
+    volumes:
+      - joomla_data:/var/www/html
+    networks:
+      - joomla-network
+
+networks:
+  joomla-network:
+
+volumes:
+  db_data:
+  joomla_data:
