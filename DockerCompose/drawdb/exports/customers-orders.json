@@ -1,0 +1,98 @@
+{
+  "tables": [
+    {
+      "id": "nAq85RYr4P-0NvaYLYUOm",
+      "name": "orders",
+      "x": 330,
+      "y": 0,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "po9hVAnODti7kXGV2u-1T"
+        },
+        {
+          "id": "GpSa61MKCe_3OIJ60HkFU",
+          "name": "customer_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "DXCel8w9lk19aoI4ltwHa",
+      "name": "customers",
+      "x": 0,
+      "y": 0,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "rhmFDkfiGqU6HsoaSsgmT"
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#175e7a",
+      "collapsed": false
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": "nAq85RYr4P-0NvaYLYUOm",
+      "startFieldId": "GpSa61MKCe_3OIJ60HkFU",
+      "endTableId": "DXCel8w9lk19aoI4ltwHa",
+      "endFieldId": "rhmFDkfiGqU6HsoaSsgmT",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "GpSa61MKCe_3OIJ60HkFU",
+          "endFieldId": "rhmFDkfiGqU6HsoaSsgmT"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_orders_customer_id_customers",
+      "color": "#808080",
+      "id": "O7xX2Ea9ECdF9n-W6qhVS"
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "views": [],
+  "database": "mysql",
+  "title": "Untitled Diagram"
+}
